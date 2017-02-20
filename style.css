@@ -1,0 +1,11 @@
+body {
+  background-color: goldenrod;
+  text-align: center;
+}
+
+canvas {
+  border: solid black 1px;
+  background-color: white;
+  width: 400px;
+  height: 400px;
+}
