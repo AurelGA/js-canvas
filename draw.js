@@ -1,3 +1,5 @@
+var RECTANGLES = [];
+
 document.addEventListener("DOMContentLoaded", main);
 
 function main() {
@@ -18,17 +20,31 @@ function main() {
   ctx.width = canvas.width;
   ctx.height = canvas.height;
 
+  function addRectangle(x, y) {
+    var rect = new Rectangle(x, y);
+    RECTANGLES.push(rect);
+  }
+  
+  function drawRectangles(ctx, rects) {
+    rects.forEach(function(rect) {
+      drawRectangle(ctx, rect.x, rect.y);
+    });
+  }
+  
   canvas.addEventListener("click", function(event) {
+    addRectangle(event.offsetX, event.offsetY);
     drawRectangle(ctx, event.offsetX, event.offsetY);
   });
   
   canvas.addEventListener("mousemove", function(event) {
-    //clearCanvas(ctx);
+    clearCanvas(ctx);
+    drawRectangles(ctx, RECTANGLES);
     drawRectangle(ctx, event.offsetX, event.offsetY);
   });
   
   document.getElementById("clear").addEventListener("click", function(event) {
     clearCanvas(ctx);
+    RECTANGLES = [];
   });
 
   // Define some variables for the x,y coordinates of where we'll draw
