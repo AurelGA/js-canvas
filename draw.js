@@ -22,6 +22,11 @@ function main() {
     drawRectangle(ctx, event.offsetX, event.offsetY);
   });
   
+  canvas.addEventListener("mousemove", function(event) {
+    //clearCanvas(ctx);
+    drawRectangle(ctx, event.offsetX, event.offsetY);
+  });
+  
   document.getElementById("clear").addEventListener("click", function(event) {
     clearCanvas(ctx);
   });
